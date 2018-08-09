@@ -5,6 +5,16 @@
     var date = ViewBag.Date;
     var student = ViewBag.Student;
     var list = ViewBag.List;
+
+    var account = "";
+    if (Session["account"] == null || string.IsNullOrWhiteSpace(Session["account"].ToString()))
+    {
+        Response.Redirect("~/Login/Login");
+    }
+    else
+    {
+        account = Session["account"].ToString();
+    }
 }
 
 <style>
@@ -14,6 +24,7 @@
 </style>
 
 <div>
+    登入成功:@account
     現在時間:@date.ToString("yyyy/MM/dd HH:mm:ss")
 </div>
 
